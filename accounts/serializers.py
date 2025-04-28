@@ -1,6 +1,9 @@
 # accounts/serializers.py
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
+from courses.serializers import CourseSerializer
+from enrollments.serializers import EnrollmentSerializer, LessonProgressSerializer, AnswerSerializer
+from content.serializers import LessonSerializer, QuestionSerializer
 
 User = get_user_model()
 
@@ -25,3 +28,16 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = User
         fields = ("id", "username", "email", "is_instructor", "first_name", "last_name")
         read_only_fields = ("id", "is_instructor")
+
+class UserDataExportSerializer(serializers.ModelSerializer):
+    # include user’s own fields
+    class Meta:
+        model = User
+        fields = ["id", "username", "email", "first_name", "last_name", "is_instructor"]
+
+class FullDataExportSerializer(serializers.Serializer):
+    user       = UserDataExportSerializer()
+    courses    = CourseSerializer(many=True)          # courses they created, if instructor
+    enrollments = EnrollmentSerializer(many=True)     # courses they’re enrolled in
+    progress    = LessonProgressSerializer(many=True) # lesson progress records
+    answers     = AnswerSerializer(many=True)         # their quiz answers

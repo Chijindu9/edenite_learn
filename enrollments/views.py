@@ -21,6 +21,7 @@ class EnrollmentViewSet(viewsets.ModelViewSet):
         serializer.save(student=self.request.user)
 
 class LessonProgressViewSet(viewsets.ModelViewSet):
+    
     serializer_class = LessonProgressSerializer
     permission_classes = [permissions.IsAuthenticated]
 
