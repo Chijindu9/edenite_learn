@@ -1,0 +1,4 @@
+# local env file
+.env
+cert.crt 
+cert.key 

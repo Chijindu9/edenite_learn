@@ -17,6 +17,9 @@ class IsInstructor(permissions.BasePermission):
             and getattr(request.user, "is_instructor", False)
         )
 
+# class IsOwner(permissions.BasePermission):
+#     def has_object_permission(self, req, view, obj):
+#         return obj.owner == req.user  # or obj.owner
 
 class CourseViewSet(viewsets.ModelViewSet):
     queryset = Course.objects.all()

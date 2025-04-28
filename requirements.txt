@@ -24,3 +24,11 @@ gunicorn>=20.1
 # Testing
 pytest>=7.3
 pytest-django>=4.5
+
+# Encripted email field
+django-cryptography
+
+# Run HTTPS in local server
+django-extensions
+Werkzeug
+pyOpenSSL # Auto-generate via runserver_plus

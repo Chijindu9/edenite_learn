@@ -9,6 +9,10 @@ Token Refresh: POST /api/auth/token/refresh/
 
 Profile:  GET/PUT /api/auth/profile/
 
+Download my personal data: GET /api/auth/gdpr/export/
+
+Delete my account: DELETE /api/auth/gdpr/delete/ 
+
 
 ========Courses App==============
 Categories:  GET/POST /api/categories/
